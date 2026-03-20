@@ -9,7 +9,7 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(epick_msgs REQUIRED)
-find_package(moveit_studio_behavior_interface REQUIRED)
+find_package(moveit_pro_behavior_interface REQUIRED)
 find_package(pluginlib REQUIRED)
 
 add_library(epick_behaviors SHARED
@@ -21,10 +21,10 @@ target_include_directories(epick_behaviors
   PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   PUBLIC $<INSTALL_INTERFACE:include>
 )
-target_link_libraries(epick_behaviors PUBLIC moveit_studio_behavior_interface::async_behavior_base)
+target_link_libraries(epick_behaviors PUBLIC moveit_pro_behavior_interface::async_behavior_base)
 ament_target_dependencies(epick_behaviors PUBLIC
   epick_msgs
-  moveit_studio_behavior_interface
+  moveit_pro_behavior_interface
   pluginlib
 )
 
@@ -49,10 +49,10 @@ if(BUILD_TESTING)
   add_subdirectory(test)
 endif()
 
-pluginlib_export_plugin_description_file(moveit_studio_behavior_interface behavior_plugin_description.xml)
+pluginlib_export_plugin_description_file(moveit_pro_behavior_interface behavior_plugin_description.xml)
 
 ament_export_include_directories(include)
 ament_export_libraries(epick_behaviors)
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
-ament_export_dependencies(epick_msgs moveit_studio_behavior_interface pluginlib)
+ament_export_dependencies(epick_msgs moveit_pro_behavior_interface pluginlib)
 ament_package()

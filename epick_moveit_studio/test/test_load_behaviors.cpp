@@ -31,12 +31,12 @@
 #include <pluginlib/class_loader.hpp>
 #include <rclcpp/node.hpp>
 
-#include <moveit_studio_behavior_interface/shared_resources_node_loader.hpp>
+#include <moveit_pro_behavior_interface/shared_resources_node_loader.hpp>
 
 namespace
 {
-constexpr auto kBehaviorInterfacePackageName = "moveit_studio_behavior_interface";
-constexpr auto kBehaviorBaseClassName = "moveit_studio::behaviors::SharedResourcesNodeLoaderBase";
+constexpr auto kBehaviorInterfacePackageName = "moveit_pro_behavior_interface";
+constexpr auto kBehaviorBaseClassName = "moveit_pro::behaviors::SharedResourcesNodeLoaderBase";
 constexpr auto kTestBehaviorName = "test_behavior_name";
 }  // namespace
 
@@ -46,11 +46,11 @@ constexpr auto kTestBehaviorName = "test_behavior_name";
  */
 TEST(EpickBehaviors, LoadBehaviorPlugins)
 {
-  pluginlib::ClassLoader<moveit_studio::behaviors::SharedResourcesNodeLoaderBase> class_loader(
+  pluginlib::ClassLoader<moveit_pro::behaviors::SharedResourcesNodeLoaderBase> class_loader(
       kBehaviorInterfacePackageName, kBehaviorBaseClassName);
 
   auto node = std::make_shared<rclcpp::Node>("test_node");
-  auto shared_resources = std::make_shared<moveit_studio::behaviors::BehaviorContext>(node);
+  auto shared_resources = std::make_shared<moveit_pro::behaviors::BehaviorContext>(node);
 
   BT::BehaviorTreeFactory factory;
   {

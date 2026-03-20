@@ -29,7 +29,7 @@
 #include <epick_moveit_studio/get_epick_object_detection_status.hpp>
 
 #include <epick_msgs/msg/object_detection_status.hpp>
-#include <moveit_studio_behavior_interface/impl/get_message_from_topic_impl.hpp>
+#include <moveit_pro_behavior_interface/impl/get_message_from_topic_impl.hpp>
 
 namespace
 {
@@ -41,8 +41,8 @@ namespace epick_moveit_studio
 {
 GetEpickObjectDetectionStatus::GetEpickObjectDetectionStatus(
     const std::string& name, const BT::NodeConfiguration& config,
-    const std::shared_ptr<moveit_studio::behaviors::BehaviorContext>& shared_resources)
-  : moveit_studio::behaviors::GetMessageFromTopicBehaviorBase<epick_msgs::msg::ObjectDetectionStatus>(name, config,
+    const std::shared_ptr<moveit_pro::behaviors::BehaviorContext>& shared_resources)
+  : moveit_pro::behaviors::GetMessageFromTopicBehaviorBase<epick_msgs::msg::ObjectDetectionStatus>(name, config,
                                                                                                       shared_resources)
 {
 }
@@ -54,4 +54,4 @@ tl::expected<std::chrono::duration<double>, std::string> GetEpickObjectDetection
 
 }  // namespace epick_moveit_studio
 
-template class moveit_studio::behaviors::GetMessageFromTopicBehaviorBase<epick_msgs::msg::ObjectDetectionStatus>;
+template class moveit_pro::behaviors::GetMessageFromTopicBehaviorBase<epick_msgs::msg::ObjectDetectionStatus>;

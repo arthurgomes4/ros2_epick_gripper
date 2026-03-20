@@ -32,9 +32,10 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
-#include <moveit_ros_control_interface/ControllerHandle.h>
+#include <moveit_ros_control_interface/ControllerHandle.hpp>
 #include <pluginlib/class_list_macros.hpp>
-#include <moveit_simple_controller_manager/gripper_controller_handle.h>
+#include <moveit_simple_controller_manager/gripper_command_controller_handle.hpp>
+#include <moveit_pro_base/controller_manager/controller_manager.hpp>
 #include <rclcpp/node.hpp>
 #include <memory>
 
@@ -52,11 +53,11 @@ namespace epick_moveit_plugin
 class EpickGripperControllerAllocator : public moveit_ros_control_interface::ControllerHandleAllocator
 {
 public:
-  moveit_controller_manager::MoveItControllerHandlePtr alloc(const rclcpp::Node::SharedPtr& node,
+  moveit_pro::base::controller_manager::MoveItControllerHandlePtr alloc(const rclcpp::Node::SharedPtr& node,
                                                              const std::string& name,
                                                              const std::vector<std::string>& /* resources */) override
   {
-    return std::make_shared<moveit_simple_controller_manager::GripperControllerHandle>(node, name,
+    return std::make_shared<moveit_simple_controller_manager::GripperCommandControllerHandle>(node, name,
                                                                                        kGripperCommandAction);
   }
 };

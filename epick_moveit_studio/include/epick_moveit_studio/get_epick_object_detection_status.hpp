@@ -29,7 +29,7 @@
 #pragma once
 
 #include <epick_msgs/msg/object_detection_status.hpp>
-#include <moveit_studio_behavior_interface/get_message_from_topic.hpp>
+#include <moveit_pro_behavior_interface/get_message_from_topic.hpp>
 
 namespace epick_moveit_studio
 {
@@ -45,11 +45,11 @@ namespace epick_moveit_studio
  * | message_out    | output    | epick_msgs::msg::ObjectDetectionStatus |
  */
 class GetEpickObjectDetectionStatus final
-  : public moveit_studio::behaviors::GetMessageFromTopicBehaviorBase<epick_msgs::msg::ObjectDetectionStatus>
+  : public moveit_pro::behaviors::GetMessageFromTopicBehaviorBase<epick_msgs::msg::ObjectDetectionStatus>
 {
 public:
   GetEpickObjectDetectionStatus(const std::string& name, const BT::NodeConfiguration& config,
-                                const std::shared_ptr<moveit_studio::behaviors::BehaviorContext>& shared_resources);
+                                const std::shared_ptr<moveit_pro::behaviors::BehaviorContext>& shared_resources);
 
 private:
   tl::expected<std::chrono::duration<double>, std::string> getWaitForMessageTimeout() override;

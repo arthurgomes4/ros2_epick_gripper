@@ -28,8 +28,8 @@
 
 #include <behaviortree_cpp/bt_factory.h>
 #include <memory>
-#include <moveit_studio_behavior_interface/behavior_context.hpp>
-#include <moveit_studio_behavior_interface/shared_resources_node_loader.hpp>
+#include <moveit_pro_behavior_interface/behavior_context.hpp>
+#include <moveit_pro_behavior_interface/shared_resources_node_loader.hpp>
 #include <pluginlib/class_list_macros.hpp>
 
 // Include headers for your custom Behaviors
@@ -38,19 +38,19 @@
 
 namespace epick_moveit_studio
 {
-class BehaviorLoader : public moveit_studio::behaviors::SharedResourcesNodeLoaderBase
+class BehaviorLoader : public moveit_pro::behaviors::SharedResourcesNodeLoaderBase
 {
 public:
   void registerBehaviors(BT::BehaviorTreeFactory& factory,
-                         const std::shared_ptr<moveit_studio::behaviors::BehaviorContext>& shared_resources) override
+                         const std::shared_ptr<moveit_pro::behaviors::BehaviorContext>& shared_resources) override
   {
-    moveit_studio::behaviors::registerBehavior<CompareEpickObjectDetectionStatus>(factory,
+    moveit_pro::behaviors::registerBehavior<CompareEpickObjectDetectionStatus>(factory,
                                                                                   "CompareEpickObjectDetectionStatus");
-    moveit_studio::behaviors::registerBehavior<GetEpickObjectDetectionStatus>(factory, "GetEpickObjectDetectionStatus",
+    moveit_pro::behaviors::registerBehavior<GetEpickObjectDetectionStatus>(factory, "GetEpickObjectDetectionStatus",
                                                                               shared_resources);
   }
 };
 
 }  // namespace epick_moveit_studio
 
-PLUGINLIB_EXPORT_CLASS(epick_moveit_studio::BehaviorLoader, moveit_studio::behaviors::SharedResourcesNodeLoaderBase);
+PLUGINLIB_EXPORT_CLASS(epick_moveit_studio::BehaviorLoader, moveit_pro::behaviors::SharedResourcesNodeLoaderBase);
