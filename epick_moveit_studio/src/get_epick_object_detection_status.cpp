@@ -47,6 +47,16 @@ GetEpickObjectDetectionStatus::GetEpickObjectDetectionStatus(
 {
 }
 
+
+BT::PortsList GetEpickObjectDetectionStatus::providedPorts()
+{
+  return BT::PortsList({
+      BT::InputPort<std::string>(kPortIDTopicName, "object_detection_status", "Image topic the behavior subscribes to."),
+      BT::OutputPort<epick_msgs::msg::ObjectDetectionStatus>(kPortIDMessageOut, "{vacuum_status}",
+                                              "Should be the status of the vacuum gripper")
+  });
+}
+
 tl::expected<std::chrono::duration<double>, std::string> GetEpickObjectDetectionStatus::getWaitForMessageTimeout()
 {
   return kWaitDuration;

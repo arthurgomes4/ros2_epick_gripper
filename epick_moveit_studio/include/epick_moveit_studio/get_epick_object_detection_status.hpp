@@ -51,6 +51,8 @@ public:
   GetEpickObjectDetectionStatus(const std::string& name, const BT::NodeConfiguration& config,
                                 const std::shared_ptr<moveit_studio::behaviors::BehaviorContext>& shared_resources);
 
+  static BT::PortsList providedPorts();
+
 private:
   tl::expected<std::chrono::duration<double>, std::string> getWaitForMessageTimeout() override;
 
