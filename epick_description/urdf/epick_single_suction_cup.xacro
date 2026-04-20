@@ -85,13 +85,10 @@
                  child="${prefix}epick_tcp"
                  xyz="0 0 ${-tcp_stroke_compensation}"/>
 
-    <!-- To allow MoveIt to actuate the gripper as part of a trajectory, we need to include a fake "joint" in the URDF corresponding to the Epick's vacuum state. -->
+    <!-- Vacuum state link for weld targets -->
     <link name="${prefix}epick_vacuum_state"/>
-    <joint name="gripper" type="revolute">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="${prefix}epick_tcp"/>
-      <child link="${prefix}epick_vacuum_state"/>
-      <limit effort="30" velocity="1.0" lower="0.0" upper="1.0" />
-    </joint>
+    <xacro:joint parent="${prefix}epick_tcp"
+                 child="${prefix}epick_vacuum_state"
+                 xyz="0 0 0"/>
   </xacro:macro>
 </robot>
