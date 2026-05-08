@@ -30,7 +30,7 @@
     <xacro:property name="body_link" value="${prefix}epick_body" scope="parent"/>
     <xacro:property name="body_length" value="0.1023" scope="parent"/>
     <xacro:property name="body_color" value="0.25 0.25 0.25 1" scope="parent"/>
-    <xacro:property name="body_collision_size" value="0.1025 0.075 0.115"/>
+    <xacro:property name="body_collision_size" value="0.07 0.08 0.1"/>
 
     <!-- Base Link -->
     <link name="${base_link}"/>
