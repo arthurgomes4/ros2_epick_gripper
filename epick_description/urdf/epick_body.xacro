@@ -30,7 +30,7 @@
     <xacro:property name="body_link" value="${prefix}epick_body" scope="parent"/>
     <xacro:property name="body_length" value="0.1023" scope="parent"/>
     <xacro:property name="body_color" value="0.25 0.25 0.25 1" scope="parent"/>
-    <xacro:property name="body_collision_radius" value="0.044"/>
+    <xacro:property name="body_collision_size" value="0.1025 0.075 0.115"/>
 
     <!-- Base Link -->
     <link name="${base_link}"/>
@@ -55,7 +55,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <cylinder radius="${body_collision_radius}" length="${body_length}"/>
+          <box size="${body_collision_size}"/>
         </geometry>
       </collision>
     </link>
