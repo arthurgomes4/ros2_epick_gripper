@@ -1,0 +1,8 @@
+Obsolete on ROS Jazzy / MoveIt Pro 10.x: this package provides only the MoveIt
+controller allocator (epick_gripper_controller_allocator), which plugs into the
+MoveIt controller-manager layer that main removed (commit 4df744f81a). It depends
+on the deleted moveit_pro_base/controller_manager/controller_manager.hpp and the
+moveit_pro::base::controller_manager::MoveItControllerHandle type. Nothing depends
+on this package and the picknik_009_ur5e config does not reference it; the gripper
+is driven via ros2_control (epick_driver + epick_controllers). Excluded from the
+build until/unless MoveIt Pro reintroduces a controller-allocator mechanism.
