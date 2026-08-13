@@ -68,18 +68,15 @@
       </gpio>
 
       <!--
-        This is optional configuration if you want to publish the state of the
-        gripper as a joint state interface.
+        A `<joint name="gripper">` state interface was published here in earlier
+        distros to mirror the grip state as a joint position. ros2_control on
+        Jazzy validates every <joint> in a <ros2_control> block against a real
+        joint in the kinematic URDF and aborts load_and_initialize_components
+        with "Joint 'gripper' not found in URDF" when it is absent (the epick is
+        a vacuum gripper with no kinematic DOF). The value duplicated the
+        gripper/grip_cmd GPIO state interface and no controller consumed it, so
+        the joint interface is dropped. Consume gripper/grip_cmd for grip state.
       -->
-      <joint name="gripper">
-        <!--
-          State interface that follows the value of the gripper/grip_cmd
-          command interface:
-          1.0 = successful grip
-          0.0 = successful release
-        -->
-        <state_interface name="position"/>
-      </joint>
 
     </ros2_control>
 
